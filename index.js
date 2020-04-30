@@ -2,8 +2,6 @@ const AWS = require('aws-sdk');
 const PortainerClient = require('portainer-api-client');
 
 const requiredEnvVars = [
-	'AWS_ACCESS_KEY_ID',
-	'AWS_SECRET_ACCESS_KEY',
 	'AWS_REGION',
 	'PORTAINER_URL',
 	'PORTAINER_USERNAME',
@@ -17,8 +15,6 @@ requiredEnvVars.forEach(function(requiredEnvVar) {
 });
 
 const registryId = process.env.REGISTRY_ID;
-const awsAccessKeyId = process.env.AWS_ACCESS_KEY_ID;
-const awsSecretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 const awsRegion = process.env.AWS_REGION;
 const registryUrl = registryId + '.dkr.ecr.' + awsRegion + '.amazonaws.com';
 const portainerUrl = process.env.PORTAINER_URL;
@@ -26,8 +22,6 @@ const portainerUsername = process.env.PORTAINER_USERNAME;
 const portainerPassword = process.env.PORTAINER_PASSWORD;
 
 AWS.config.update({
-	accessKeyId: awsAccessKeyId,
-	secretAccessKey: awsSecretAccessKey,
 	region: awsRegion
 });
 
